@@ -12,9 +12,10 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
-      - name: Select Xcode 16
+      - name: Select Xcode
         run: |
-          XCODE_APP=$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)
+          ls -d /Applications/Xcode*.app
+          XCODE_APP=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
           echo "Using $XCODE_APP"
           sudo xcode-select -s "$XCODE_APP/Contents/Developer"
           xcodebuild -version
